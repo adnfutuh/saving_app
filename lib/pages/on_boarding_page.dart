@@ -4,6 +4,7 @@ import 'package:saving_app/style/text_style.dart';
 
 class OnBoardingPage extends StatelessWidget {
   const OnBoardingPage({super.key});
+  static const nameRoute = '/';
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +44,10 @@ class OnBoardingPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 70),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, '/main', (route) => false);
+                    },
                     style: TextButton.styleFrom(
                       backgroundColor: kBlueRibbon,
                       padding: const EdgeInsets.symmetric(
