@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:saving_app/style/colors.dart';
 import 'package:saving_app/style/text_style.dart';
@@ -137,6 +136,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
             Container(
+              margin: const EdgeInsets.only(top: 180),
               child: DraggableScrollableSheet(
                 builder: (context, scrollController) {
                   return Container(
@@ -171,7 +171,55 @@ class HomePage extends StatelessWidget {
                                 const SizedBox(
                                   height: 31,
                                 ),
-                                _transactionList()
+                                _transactionList(
+                                  kOrange.withOpacity(0.2),
+                                  'assets/icons/triangle-down.png',
+                                  'Payment #Invest',
+                                  '19 February 2024, 03:25 PM',
+                                  '+ 800.000',
+                                ),
+                                _transactionList(
+                                  kTreeGreen.withOpacity(0.2),
+                                  'assets/icons/triangle-up.png',
+                                  'Success!',
+                                  '28 February 2024, 02:25 PM',
+                                  '+ 150.000',
+                                ),
+                                _transactionList(
+                                  kOrange.withOpacity(0.2),
+                                  'assets/icons/triangle-down.png',
+                                  'Starbucks Drinks',
+                                  '1 Maret 2024, 04:25 PM',
+                                  '- 110.000',
+                                ),
+                                _transactionList(
+                                  kOrange.withOpacity(0.2),
+                                  'assets/icons/triangle-down.png',
+                                  'Trapezius Gym',
+                                  '17 Maret 2024, 07:25 PM',
+                                  '- 150.000',
+                                ),
+                                _transactionList(
+                                  kTreeGreen.withOpacity(0.2),
+                                  'assets/icons/triangle-up.png',
+                                  'Success!',
+                                  '24 Maret 2024, 07:25 AM',
+                                  '+ 350.000',
+                                ),
+                                _transactionList(
+                                  kTreeGreen.withOpacity(0.2),
+                                  'assets/icons/triangle-up.png',
+                                  'Success!',
+                                  '18 April 2024, 06:25 PM',
+                                  '+ 700.000',
+                                ),
+                                _transactionList(
+                                  kTreeGreen.withOpacity(0.2),
+                                  'assets/icons/triangle-up.png',
+                                  'Success!',
+                                  '28 April 2024, 08:25 PM',
+                                  '+ 150.000',
+                                ),
                               ],
                             ),
                           ),
@@ -196,48 +244,57 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _transactionList() {
-    return Row(
-      children: [
-        SizedBox(
-          height: 30,
-          width: 30,
-          child: CircleAvatar(
-            backgroundColor: kTreeGreen.withOpacity(0.2),
-            child: const Image(
-              image: AssetImage(
-                'assets/icons/triangle-up.png',
+  Widget _transactionList(
+    Color bgColor,
+    String icon,
+    String title,
+    String sub,
+    String amount,
+  ) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 30),
+      child: Row(
+        children: [
+          SizedBox(
+            height: 30,
+            width: 30,
+            child: CircleAvatar(
+              backgroundColor: bgColor,
+              child: Image(
+                image: AssetImage(
+                  icon,
+                ),
+                width: 14,
               ),
-              width: 14,
             ),
           ),
-        ),
-        const SizedBox(
-          width: 10,
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Success!',
-              style: kBody1.copyWith(
-                color: kLuckyBlue,
+          const SizedBox(
+            width: 10,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: kBody1.copyWith(
+                  color: kLuckyBlue,
+                ),
               ),
-            ),
-            Text(
-              '19 February 2024, 03:25 PM',
-              style: kCaption.copyWith(
-                color: kLightGray,
+              Text(
+                sub,
+                style: kCaption.copyWith(
+                  color: kLightGray,
+                ),
               ),
-            ),
-          ],
-        ),
-        const Spacer(),
-        Text(
-          '+ 100.000',
-          style: kBody1.copyWith(color: kLuckyBlue),
-        )
-      ],
+            ],
+          ),
+          const Spacer(),
+          Text(
+            amount,
+            style: kBody1.copyWith(color: kLuckyBlue),
+          )
+        ],
+      ),
     );
   }
 
