@@ -32,7 +32,7 @@ class HomePage extends StatelessWidget {
                             style: kBody1.copyWith(color: kMatterhornBlack),
                           ),
                           Text(
-                            'Rizki Adnan Futuh',
+                            'Rizki Adnan Futuh 👋🏻',
                             style: kHeading6.copyWith(color: kMatterhornBlack),
                           ),
                         ],
