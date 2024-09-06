@@ -136,9 +136,108 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
+            Container(
+              child: DraggableScrollableSheet(
+                builder: (context, scrollController) {
+                  return Container(
+                    padding: const EdgeInsets.only(
+                      left: 30,
+                      right: 30,
+                      top: 21,
+                    ),
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(40),
+                      ),
+                      color: kWhite,
+                    ),
+                    child: Stack(
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(top: 14),
+                          child: SingleChildScrollView(
+                            controller: scrollController,
+                            child: Column(
+                              children: [
+                                Center(
+                                  child: Text(
+                                    'Transactions History',
+                                    style: kHeading5.copyWith(
+                                      color: kLuckyBlue,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 31,
+                                ),
+                                _transactionList()
+                              ],
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.topCenter,
+                          child: Container(
+                            height: 4,
+                            width: 49,
+                            color: kEgyptianBlue.withOpacity(0.1),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            )
           ],
         ),
       ),
+    );
+  }
+
+  Widget _transactionList() {
+    return Row(
+      children: [
+        SizedBox(
+          height: 30,
+          width: 30,
+          child: CircleAvatar(
+            backgroundColor: kTreeGreen.withOpacity(0.2),
+            child: const Image(
+              image: AssetImage(
+                'assets/icons/triangle-up.png',
+              ),
+              width: 14,
+            ),
+          ),
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Success!',
+              style: kBody1.copyWith(
+                color: kLuckyBlue,
+              ),
+            ),
+            Text(
+              '19 February 2024, 03:25 PM',
+              style: kCaption.copyWith(
+                color: kLightGray,
+              ),
+            ),
+          ],
+        ),
+        const Spacer(),
+        Text(
+          '+ 100.000',
+          style: kBody1.copyWith(color: kLuckyBlue),
+        )
+      ],
     );
   }
 
